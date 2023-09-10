@@ -5,9 +5,7 @@ import java.net.UnknownHostException;
 public class SocketClient {
     public static void main(String[] args) {
         String serverOutlook = "SMTP.office365.com";
-        //Servidor SMTP do Microsoft
         int portSMTP = 587 ;
-        //Porta de Saída
 
         try (Socket socket = new Socket(serverOutlook, portSMTP)) {
             System.out.println("------------- Criando conexão com servidor outlook -----------------");
@@ -25,14 +23,11 @@ public class SocketClient {
             System.out.println(line);
             System.out.println();
 
-
-            writer.println(" ");
+            writer.println("helo");
             line = reader.readLine();
-       //     System.out.println("------------- Ação de e-mail solicitada correta, concluída -----------------");
+            System.out.println("------------- Ação de e-mail solicitada correta, concluída -----------------");
             System.out.println(line);
             System.out.println();
-
-
 
             writer.println("quit");
             line = reader.readLine();
@@ -42,11 +37,9 @@ public class SocketClient {
 
 
         } catch (UnknownHostException exp) {
-
             System.out.println("O Servidor não foi encontrado: " + exp.getMessage());
 
         } catch (IOException exp) {
-
             System.out.println("Error: " + exp.getMessage());
         }
     }
